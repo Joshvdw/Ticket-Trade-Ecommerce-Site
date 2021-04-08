@@ -49,83 +49,43 @@
         </nav>
     </div>
 
-
-
-      <!-- {# SELL TICKET FORM #} -->
-      <!-- <div class="container bg-light py-5">
-
-          <h1 class="text-center pt-5 font-weight-bold">Sell Your Tickets</h1>
-          <div class="p-5">
-            <form action="/dashboard" method="post">
-            <label class="font-weight-bold" for="title">Title</label><br>
-            <input class=" p-2 w-100" type="text" placeholder="Enter project title" name="title"><br><br>
-            <label class="font-weight-bold" for="category">Category</label>
-            <div class="container p-0">
-                <label class="btn pl-0">
-                  <input type="checkbox" name="" id="concert" value="checked"> Concert
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="exhibition" value="checked"> Exhibition
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="theatre" value="checked"> Theatre
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="sports" value="checked"> Sports
-                </label>
-            </div>
-            <label class="font-weight-bold" for="post">Description</label><br>
-            <textarea class="rounded p-2 w-100" type="text" placeholder="Write something..." name="description" id="post" rows="5"></textarea><br><br>
-            <label class="font-weight-bold" for="portfolio">Product Tags</label><br>
-            <input class=" p-2 w-100" type="text" placeholder="Link your portfolio here" name="portfolio"><br><br> 
-            <label class="font-weight-bold" for="img">Image ID</label><br>
-            <input class=" p-2 w-100" type="description" placeholder="ID from Google Drive URL" name="img"><br><br><br>
-            <button class="w-100 bg-info text-white rounded py-2 px-4 border-0" type="submit">Create Listing</button>
-
-            </form>
-            <hr class="mt-5">
-          </div>
-        </div>
-
-      </div> -->
-
  <div class="col-sm-6 mx-auto mt-5 ">
         <div class=" m-auto  rounded bg-light">
           
           <div class="p-3">
 
-            <form action="/dashboard" method="post">
+            <form action="/sell-ticket" method="POST">
               <h2 class="text-center">Sell Your Tickets</h2>
-            <label class="" for="title">Title</label>
-            <input class="form-control" type="text" placeholder="Enter project title" name="title">
-            <label class="mt-2" for="category">Category</label>
+              <label class="" for="title">Title</label>
+              <input class="form-control" type="text" placeholder="Enter project title" id="title" name="title">
+              <label class="mt-2" for="category">Category</label>
 
-            <div class="">
-                <label class="btn">
-                  <input type="checkbox" name="" id="concert" value="checked"> Concert
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="exhibition" value="checked"> Exhibition
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="theatre" value="checked"> Theatre
-                </label>
-                <label class="btn">
-                  <input type="checkbox" name="" id="sports" value="checked"> Sports
-                </label>
-            </div>
+              <div class="">
+                  <label class="btn ml-0">
+                    <input type="checkbox" name="concert" id="concert" value="checked"> Concert
+                  </label>
+                  <label class="btn">
+                    <input type="checkbox" name="exhibition" id="exhibition" value="checked"> Exhibition
+                  </label>
+                  <label class="btn">
+                    <input type="checkbox" name="theatre" id="theatre" value="checked"> Theatre
+                  </label>
+                  <label class="btn">
+                    <input type="checkbox" name="sports" id="sports" value="checked"> Sports
+                  </label>
+              </div>
 
-            <label class="" for="post">Description</label>
-            <textarea class=" form-control" type="text" placeholder="Write something..." name="description" id="post" rows="5"></textarea>
-            <label class="mt-2" for="portfolio">Product Tags</label>
-            <input class=" form-control" type="text" placeholder="Link your portfolio here" name="portfolio">
-            <label class="mt-2" for="img">Image ID</label>
-            <input class=" form-control" type="description" placeholder="ID from Google Drive URL" name="img">
+              <label class="" for="description">Description</label>
+              <textarea class="form-control" type="text" placeholder="Write something..." name="description" id="post" rows="5"></textarea>
+              <label class="mt-2" for="tags">Product Tags</label>
+              <input class=" form-control" type="text" placeholder="Tags here" name="tags">
+              <label class="mt-2" for="img">Image ID</label>
+              <input class="form-control" type="text" placeholder="ID from Google Drive URL" name="img">
 
-            
+              <button class="col-12 btn btn-info text-light mt-3" type="submit">Create Listing</button>
+
 
             </form>
-            <button class="col-12 btn btn-info text-light mt-3" type="submit">Create Listing</button>
           </div>
         </div>
       </div>

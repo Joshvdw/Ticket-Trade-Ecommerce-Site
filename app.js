@@ -83,8 +83,11 @@ app.post("/register", (req, res) => {
 
 //passport-local-mongoose function to register a new user
   User.register(new User({ 
-    	username: req.body.username,
-    	phone: req.body.phone,
+    	firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      number: req.body.number,
+      username: req.body.username,
     	}),
     	req.body.password,
     	  function (err, user) {
@@ -105,7 +108,7 @@ app.post("/register", (req, res) => {
   // such as encryped the password with hash & salt, and then being able to verify it
   app.post("/login", passport.authenticate("local",{
     // on success, redirect to the dashboard, on failure, redirect back to login
-    successRedirect: "/sell-ticket",
+    successRedirect: "/profile",
     failureRedirect: "/login"
     })
   );
@@ -124,10 +127,10 @@ app.post("/register", (req, res) => {
       res.redirect('/');
   }
 
-  // stop users from seeing the dashboard if they haven't logged in
-//   app.get("/sell-ticket", isLoggedIn, (req, res) => {
-//     res.render('sell-ticket.html', { user: req.user })
-//   })
+  // stop users from selling if they haven't logged in
+  app.get("/sell-ticket", isLoggedIn, (req, res) => {
+    res.render('sell-ticket.html', { user: req.user })
+  })
 
   app.post('/sell-ticket', (req, res) => {
     console.log("post submitted");
