@@ -33,8 +33,8 @@
                             <a class="nav-link" href="/login">LOG IN</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/profile">PROFILE</a>
-                      </li>
+                            <a class="nav-link" href="/profile">PROFILE</a>
+                        </li>
                     </ul>
 
                     <a class=" btn btn-warning " href="/sell-ticket">SELL</a>
@@ -47,59 +47,35 @@
         </nav>
     </div>
 
-  <div class="col-sm-6 bg-light rounded mt-5 mx-auto p-3">
 
-    <form class="row">
+    <div class="col-sm-6  mt-5 mx-auto ">
+        
+        <form class=" bg-light rounded p-3">
+    
+            <h2 class="text-center">Login</h2> 
 
-      <h2 class="text-center pb-3">Register</h2> 
-
-      <div class="col-md-6">
-        <label for="firstname" class=" form-label">Firstname</label>
-        <input type="text" class="form-control" id="firstname" placeholder="john"/>
+          <div class="col-md-12">
+    
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="username" />
+    
+          </div>
+    
+          <div class="col-md-12">
+    
+            <label for="password" class="form-label mt-2">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Must contain a number" />
+    
+          </div>
+    
+          <div class="float-right mt-3">
+            <button type="submit" class="btn btn-info text-light">Login</button>
+          </div>
+    
+          
+        </form>
+        
       </div>
-
-      <div class="col-md-6">
-        <label for="lastname" class="form-label">Lastname</label>
-        <input type="text" class="form-control" id="lastname" placeholder="samuel"/>
-      </div>
-
-      <div class="col-md-6">
-
-        <label for="email" class=" mt-2 form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="example@gmail.com" />
-
-      </div>
-
-      <div class="col-md-6">
-
-        <label for="password" class="mt-2 form-label">Number</label>
-        <input type="password" class="form-control" id="password" placeholder="021-11-36565" />
-
-      </div>
-
-
-      <div class="col-md-6">
-
-        <label for="username" class="mt-2 form-label">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="username" />
-
-      </div>
-
-      <div class="col-md-6">
-
-        <label for="password" class="mt-2 form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Must contain a number" />
-
-      </div>
-
-
-      
-    </form>
-    <div class="float-right">
-        <button type="submit" class="btn btn-info text-light">Register</button>
-      </div>
-  </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
