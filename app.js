@@ -138,6 +138,8 @@ app.post("/register", (req, res) => {
     // using the model created in post.js to post to the request
     new Post({
         title: req.body.title,
+        modalId: req.body.modalId,
+        place: req.body.place,
         category: req.body.category,
         description: req.body.description,
         tags: req.body.tags,
@@ -173,6 +175,8 @@ app.get('/delete/:id', (req, res) => {
 app.get('/', (req, res) => {
     // FETCH ALL POSTS FROM DATABASE
     Post.find()
+
+
     // SET descending ORDER BY createdAt
     .sort({createdAt: 'descending'})
     .then(result => {
