@@ -29,15 +29,19 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="/register">REGISTER</a>
                         </li>
-                        <li class="nav-item">
+                        {# <li class="nav-item">
                             <a class="nav-link" href="/login">LOG IN</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> #}
+                        {# <li class="nav-item">
                             <a class="nav-link" href="/profile">PROFILE</a>
-                        </li>
+                        </li> #}
                     </ul>
 
+                    {% if user %}
                     <a class=" btn btn-warning " href="/sell-ticket">SELL</a>
+                    {% else %}
+                    <a class=" btn btn-warning " href="/login">SELL</a>
+                    {% endif %}
                     <!-- <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>

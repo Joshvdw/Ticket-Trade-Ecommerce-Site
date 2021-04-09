@@ -25,18 +25,35 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
 
           <ul class="navbar-nav">
+<
+            {% if user %}
+
+            {% else %}
             <li class="nav-item ">
               <a class="nav-link" href="/register">REGISTER</a>
             </li>
+            {% endif %}
+            {% if user %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">LOG OUT</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="/login">LOG IN</a>
             </li>
+            {% endif %}
+            {% if user %}
             <li class="nav-item">
               <a class="nav-link" href="/profile">PROFILE</a>
             </li>
+            {% endif %}
           </ul>
-
+          {% if user %}
           <a class=" btn btn-warning " href="/sell-ticket">SELL</a>
+          {% else %}
+          <a class=" btn btn-warning " href="/login">SELL</a>
+          {% endif %}
+
           <!-- <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -48,12 +65,13 @@
 
 
   <div class="container">
-
+    
     <form class="btn-group bg-light rounded my-2">
 
       <label class="btn">
             <input type="checkbox" name="" id="all"  > All
           </label>
+
       <label class="btn">
         <input type="checkbox" name="" id="concert" value="checked"> Concert
       </label>
@@ -70,6 +88,7 @@
   </div>
 
   <div class="container bg-light rounded mt-4">
+
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
       {% if allpost is empty %}
@@ -122,8 +141,9 @@
       {% endfor %}
       {% endif %}
 
-
     </div>
+  </div>
+
 
 
 

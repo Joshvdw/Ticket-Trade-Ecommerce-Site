@@ -63,19 +63,25 @@ app.listen(port, function (err) {
 
 // LOGIN
 app.get("/login", (req, res) => {
-  res.render("login")
+  res.render('login', {
+    user: req.user
+  });
 });
 // REGISTER
 app.get("/register", (req, res) => {
-  res.render("register")
+    res.render('register', {
+      user: req.user
+    });
 });
 // PROFILE
-app.get("/profile", (req, res) => {
-  res.render("profile")
-});
+// app.get("/profile", (req, res) => {
+//   res.render("profile")
+// });
 // SELL TICKET - needs to be changed to check whether user is logged in or not
 app.get("/sell-ticket", (req, res) => {
-  res.render("sell-ticket")
+    res.render('sell-ticket', {
+      user: req.user
+    });
 });
 
 // set up the functionality for registering a new user
@@ -107,7 +113,7 @@ app.post("/register", (req, res) => {
   // the passport npm module allows you to write a simple function, to achieve something much more complex 
   // such as encryped the password with hash & salt, and then being able to verify it
   app.post("/login", passport.authenticate("local",{
-    // on success, redirect to the dashboard, on failure, redirect back to login
+    // on success, redirect to the profile, on failure, redirect back to login
     successRedirect: "/profile",
     failureRedirect: "/login"
     })
@@ -117,7 +123,7 @@ app.post("/register", (req, res) => {
   app.get("/logout", (req, res) => {
     // passport module logout function and then a simple redirect back to the home page
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Check if user is authenticated and logged in, return a next() function to run the next piece of middleware if so, redirect to home page if not
@@ -130,6 +136,10 @@ app.post("/register", (req, res) => {
   // stop users from selling if they haven't logged in
   app.get("/sell-ticket", isLoggedIn, (req, res) => {
     res.render('sell-ticket.html', { user: req.user })
+  })
+
+    app.get("/profile", isLoggedIn, (req, res) => {
+    res.render('profile.html', { user: req.user })
   })
 
   app.post('/sell-ticket', (req, res) => {
@@ -184,7 +194,8 @@ app.get('/', (req, res) => {
             console.log(result);
             // RENDERING HOME VIEW WITH ALL POSTS
             res.render('home',{
-                allpost:result
+                allpost:result,
+                user: req.user
             });
         }
     })
