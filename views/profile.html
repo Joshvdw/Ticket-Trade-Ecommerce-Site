@@ -39,12 +39,6 @@
           >
             <ul class="navbar-nav mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="/register">REGISTER</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">LOG IN</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="/profile">PROFILE</a>
               </li>
             </ul>
@@ -85,6 +79,14 @@
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This content is a little bit longer.</p>
                 </div>
+
+                 <a href="/edit/{{post._id}}"><input
+                  class="post-btn text-white border-0 rounded py-2 px-4 font-weight-bold mb-3 mr-2" type="submit"
+                  value="EDIT" id="edit"></a>
+              <a href="/delete/{{post._id}}"><input
+                  class="bg-danger text-white border-0 rounded py-2 px-4 font-weight-bold mb-3 ml-2" type="submit"
+                  value="DELETE" id="delete"></a>
+
                 <div class="card-footer">
                   <small class="text-muted">3 mins ago</small>
                 </div>
