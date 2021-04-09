@@ -6,6 +6,14 @@ const postSchema = new Schema({
         type:String,
         require:true
     },
+    modalId: {
+        type:String,
+        require:true
+    },
+    place: {
+        type:String,
+        require:true
+    },
     category: {
         type: String,
         require: true
