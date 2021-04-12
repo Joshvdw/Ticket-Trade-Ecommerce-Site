@@ -63,19 +63,22 @@ app.listen(port, function (err) {
 
 // LOGIN
 app.get("/login", (req, res) => {
-  res.render("login")
+  res.render('login', {
+    user: req.user
+  });
 });
 // REGISTER
 app.get("/register", (req, res) => {
-  res.render("register")
+    res.render('register', {
+      user: req.user
+    });
 });
-// PROFILE
-app.get("/profile", (req, res) => {
-  res.render("profile")
-});
-// SELL TICKET - needs to be changed to check whether user is logged in or not
+
+// SELL TICKET 
 app.get("/sell-ticket", (req, res) => {
-  res.render("sell-ticket")
+    res.render('sell-ticket', {
+      user: req.user
+    });
 });
 
 // set up the functionality for registering a new user
@@ -83,8 +86,11 @@ app.post("/register", (req, res) => {
 
 //passport-local-mongoose function to register a new user
   User.register(new User({ 
-    	username: req.body.username,
-    	phone: req.body.phone,
+    	firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      number: req.body.number,
+      username: req.body.username,
     	}),
     	req.body.password,
     	  function (err, user) {
@@ -104,8 +110,8 @@ app.post("/register", (req, res) => {
   // the passport npm module allows you to write a simple function, to achieve something much more complex 
   // such as encryped the password with hash & salt, and then being able to verify it
   app.post("/login", passport.authenticate("local",{
-    // on success, redirect to the dashboard, on failure, redirect back to login
-    successRedirect: "/sell-ticket",
+    // on success, redirect to the profile, on failure, redirect back to login
+    successRedirect: "/profile",
     failureRedirect: "/login"
     })
   );
@@ -114,7 +120,7 @@ app.post("/register", (req, res) => {
   app.get("/logout", (req, res) => {
     // passport module logout function and then a simple redirect back to the home page
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Check if user is authenticated and logged in, return a next() function to run the next piece of middleware if so, redirect to home page if not
@@ -124,10 +130,35 @@ app.post("/register", (req, res) => {
       res.redirect('/');
   }
 
-  // stop users from seeing the dashboard if they haven't logged in
-//   app.get("/sell-ticket", isLoggedIn, (req, res) => {
-//     res.render('sell-ticket.html', { user: req.user })
-//   })
+  // stop users from selling if they haven't logged in
+  app.get("/sell-ticket", isLoggedIn, (req, res) => {
+    res.render('sell-ticket.html', { user: req.user })
+  })
+
+    app.get("/profile", isLoggedIn, (req, res) => {
+  
+    Post.find()
+
+
+      // SET descending ORDER BY createdAt
+      .sort({
+        createdAt: 'descending'
+      })
+      .then(result => {
+        if (result) {
+          console.log(result);
+          // RENDERING HOME VIEW WITH ALL POSTS
+          res.render('profile', {
+            allpost: result,
+            user: req.user
+          });
+        }
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+    })
+
 
   app.post('/sell-ticket', (req, res) => {
     console.log("post submitted");
@@ -135,6 +166,8 @@ app.post("/register", (req, res) => {
     // using the model created in post.js to post to the request
     new Post({
         title: req.body.title,
+        modalId: req.body.modalId,
+        place: req.body.place,
         category: req.body.category,
         description: req.body.description,
         tags: req.body.tags,
@@ -157,11 +190,11 @@ app.post("/register", (req, res) => {
 app.get('/delete/:id', (req, res) => {
   Post.findByIdAndDelete(req.params.id)
     .then(result => {
-      res.redirect('/');
+      res.redirect('/profile');
     })
     .catch(err => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/profile');
     })
 });
 
@@ -170,6 +203,8 @@ app.get('/delete/:id', (req, res) => {
 app.get('/', (req, res) => {
     // FETCH ALL POSTS FROM DATABASE
     Post.find()
+
+
     // SET descending ORDER BY createdAt
     .sort({createdAt: 'descending'})
     .then(result => {
@@ -177,7 +212,8 @@ app.get('/', (req, res) => {
             console.log(result);
             // RENDERING HOME VIEW WITH ALL POSTS
             res.render('home',{
-                allpost:result
+                allpost:result,
+                user: req.user
             });
         }
     })

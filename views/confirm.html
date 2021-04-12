@@ -29,9 +29,15 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="/register">REGISTER</a>
                         </li>
+                        {% if user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">LOG OUT</a>
+                        </li>
+                        {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="/login">LOG IN</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                           <a class="nav-link" href="/profile">PROFILE</a>
                       </li>

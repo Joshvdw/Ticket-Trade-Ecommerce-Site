@@ -26,18 +26,22 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
 
                     <ul class="navbar-nav mb-lg-0 ">
-                        <li class="nav-item ">
+                        {# <li class="nav-item ">
                             <a class="nav-link" href="/register">REGISTER</a>
-                        </li>
+                        </li> #}
                         <li class="nav-item">
                             <a class="nav-link" href="/login">LOG IN</a>
                         </li>
-                        <li class="nav-item">
+                        {# <li class="nav-item">
                           <a class="nav-link" href="/profile">PROFILE</a>
-                      </li>
+                        </li> #}
                     </ul>
 
+                    {% if user %}
                     <a class=" btn btn-warning " href="/sell-ticket">SELL</a>
+                    {% else %}
+                    <a class=" btn btn-warning " href="/login">SELL</a>
+                    {% endif %}
                     <!-- <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -49,31 +53,31 @@
 
   <div class="col-sm-6 bg-light rounded mt-5 mx-auto p-3">
 
-    <form class="row">
+    <form class="row" action="/register" method="POST">
 
       <h2 class="text-center pb-3">Register</h2> 
 
       <div class="col-md-6">
         <label for="firstname" class=" form-label">Firstname</label>
-        <input type="text" class="form-control" id="firstname" placeholder="john"/>
+        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="john" />
       </div>
 
       <div class="col-md-6">
         <label for="lastname" class="form-label">Lastname</label>
-        <input type="text" class="form-control" id="lastname" placeholder="samuel"/>
+        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="samuel" />
       </div>
 
       <div class="col-md-6">
 
         <label for="email" class=" mt-2 form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="example@gmail.com" />
+        <input type="email" class="form-control" name="email" id="email" placeholder="example@gmail.com" />
 
       </div>
 
       <div class="col-md-6">
 
-        <label for="password" class="mt-2 form-label">Number</label>
-        <input type="password" class="form-control" id="password" placeholder="021-11-36565" />
+        <label for="number" class="mt-2 form-label">Number</label>
+        <input type="string" class="form-control" name="number" id="number" placeholder="021-11-36565" />
 
       </div>
 
@@ -81,23 +85,23 @@
       <div class="col-md-6">
 
         <label for="username" class="mt-2 form-label">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="username" />
+        <input type="text" class="form-control" name="username" id="username" placeholder="username" />
 
       </div>
 
       <div class="col-md-6">
 
         <label for="password" class="mt-2 form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Must contain a number" />
+        <input type="password" class="form-control" name="password" id="password" placeholder="Must contain a number" />
 
       </div>
 
-
-      
-    </form>
-    <div class="float-right">
+      <div class="float-right mt-3">
         <button type="submit" class="btn btn-info text-light">Register</button>
       </div>
+      
+    </form>
+
   </div>
 
 
