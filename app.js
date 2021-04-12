@@ -1,15 +1,13 @@
 // importing all the npm modules
 const express = require("express");
-const app = express()
+const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 
-// calling in the mongoose schema for the user
+// importing in the mongoose schemas
 const User = require("./models/user");
-
-// importing the mongoose schema model from the post.js file in the models folder
-const Post = require('./models/post')
+const Post = require("./models/post");
 
 // setting the strategy to provide security using passport local
 const LocalStrategy = require("passport-local");
@@ -61,6 +59,8 @@ app.listen(port, function (err) {
   }
 });
 
+// NAVIGATION
+
 // LOGIN
 app.get("/login", (req, res) => {
   res.render('login', {
@@ -73,12 +73,17 @@ app.get("/register", (req, res) => {
       user: req.user
     });
 });
-
 // SELL TICKET 
 app.get("/sell-ticket", (req, res) => {
     res.render('sell-ticket', {
       user: req.user
     });
+});
+// CONFIRM
+app.get("/confirm", (req, res) => {
+  res.render('confirm', {
+    user: req.user
+  });
 });
 
 // set up the functionality for registering a new user
@@ -184,6 +189,54 @@ app.post("/register", (req, res) => {
       .catch(err => {
         if (err) throw err;
       })
+  });
+
+  // app.post('/', (req, res) => {
+  //   console.log("comment submitted");
+
+  //   new Comment({
+  //       comment: req.body.comment,
+  //       id: req.body.id
+  //     })
+  //     .save()
+  //     .then(result => {
+  //       res.redirect('/')
+  //     })
+  //     .catch(err => {
+  //       if (err) throw err;
+  //     })
+  // });
+
+  ////////////////////////////////
+  ///                          ///
+  /// Comment on post function ///
+  ///                          ///
+  ////////////////////////////////
+
+  app.post('/comment/:id', (req, res) => {
+    Post.findById(req.params.id)
+      .then(result => {
+        if (result) {
+          const new_comment = " " + req.body.comment;
+          Post.findByIdAndUpdate(req.params.id, {
+            $push: {
+              comment: new_comment
+            }
+          }, {
+            returnOriginal: false
+          }).exec();
+          console.log(Post.comment);
+        } else {
+          console.log(err);
+          res.redirect('/');
+        }
+      })
+      .then(update => {
+        res.redirect('/');
+      })
+      .catch(err => {
+        res.redirect('/');
+      });
   });
 
 // delete function

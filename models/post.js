@@ -29,6 +29,10 @@ const postSchema = new Schema({
     img: {
         type: String,
         require: true
+    },
+    comment: {
+        type: Array,
+        require: true
     }
 }, {
     timestamps: true
