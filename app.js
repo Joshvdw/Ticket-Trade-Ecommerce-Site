@@ -73,11 +73,8 @@ app.get("/register", (req, res) => {
       user: req.user
     });
 });
-// PROFILE
-// app.get("/profile", (req, res) => {
-//   res.render("profile")
-// });
-// SELL TICKET - needs to be changed to check whether user is logged in or not
+
+// SELL TICKET 
 app.get("/sell-ticket", (req, res) => {
     res.render('sell-ticket', {
       user: req.user
@@ -139,8 +136,29 @@ app.post("/register", (req, res) => {
   })
 
     app.get("/profile", isLoggedIn, (req, res) => {
-    res.render('profile.html', { user: req.user })
-  })
+  
+    Post.find()
+
+
+      // SET descending ORDER BY createdAt
+      .sort({
+        createdAt: 'descending'
+      })
+      .then(result => {
+        if (result) {
+          console.log(result);
+          // RENDERING HOME VIEW WITH ALL POSTS
+          res.render('profile', {
+            allpost: result,
+            user: req.user
+          });
+        }
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+    })
+
 
   app.post('/sell-ticket', (req, res) => {
     console.log("post submitted");
@@ -172,11 +190,11 @@ app.post("/register", (req, res) => {
 app.get('/delete/:id', (req, res) => {
   Post.findByIdAndDelete(req.params.id)
     .then(result => {
-      res.redirect('/');
+      res.redirect('/profile');
     })
     .catch(err => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/profile');
     })
 });
 
