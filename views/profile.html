@@ -59,19 +59,11 @@
       <div class="col-sm-6 mr-3 bg-info text-center rounded">
         <h4 class="mt-2 mb-5">Your Details</h4>
 
-        {# {% if user %} #}
-        {# {% for user in alluser %} #}
+        <p>Username: {{user.username |e}}</p>
         <p>Name: {{user.firstname |e}} {{user.lastname |e}}</p>
         <p>Email: {{user.email |e}}</p>
         <p>Phone Number: {{user.number |e}}</p>
-        <p>Username: {{user.username |e}}</p>
-        {# {% endfor %} #}
 
-        {# {% endif %} #}
-        {# <h5 class="mt-3">Muhammed shahas</h5>
-        <h6>Username</h6>
-        <h6>mobile number</h6>
-        <h6>43 sydney street</h6> #}
       </div>
 
       <div class="col-sm-6 bg-primary rounded">
@@ -105,13 +97,6 @@
 
           {% endfor %}
           {% endif %}
-
-          
-
-          
-        
-
-         
 
         </div>
       </div>

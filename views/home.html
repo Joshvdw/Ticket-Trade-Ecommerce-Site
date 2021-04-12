@@ -101,9 +101,11 @@
             <h4 class="card-title">{{post.title | e}}</h4>
             <h5 class="card-title">{{post.place | e}}</h5>
             <p class="card-text">{{post.description | e}}</p>
+            <p>{{post.tags | e}}</p>
+
             <div class=" d-flex justify-content-between ">
               <button href=" {{post.portfolio | e}} " class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#{{post.modalId | e}}">DETAILS</button>
-              <button class="btn btn-primary align-self-end">BUY</button>
+              <button class="btn btn-primary align-self-end" href="/confirm">BUY</button>
             </div>
           </div>
 
