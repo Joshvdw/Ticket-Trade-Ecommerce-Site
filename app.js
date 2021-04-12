@@ -274,3 +274,47 @@ app.get('/', (req, res) => {
         if (err) throw err;
     }); 
 });
+
+// EDIT POST
+// app.get('/edit/:id', (req, res) => {
+
+//   Post.findById(req.params.id)
+//     .then(result => {
+//       if (result) {
+//         res.render('edit', {
+//           post: result
+//         });
+//       } else {
+//         res.redirect('/');
+//       }
+//     })
+//     .catch(err => {
+//       res.redirect('/');
+//     });
+// });
+
+// UPDATE POST
+app.post('/edit/:id', (req, res) => {
+  Post.findById(req.params.id)
+    .then(result => {
+      if (result) {
+        console.log('updated')
+        result.title = req.body.title;
+        result.place = req.body.place;
+        result.category = req.body.category;
+        result.description = req.body.description;
+        result.tags = req.body.tags;
+        result.img = req.body.img;
+        return result.save();
+      } else {
+        console.log(err);
+        res.redirect('/profile');
+      }
+    })
+    .then(update => {
+      res.redirect('/profile');
+    })
+    .catch(err => {
+      res.redirect('/profile');
+    });
+});
