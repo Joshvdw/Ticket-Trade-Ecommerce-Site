@@ -70,8 +70,8 @@
         <h4 class="mt-2 text-center">Your Tickets</h4>
 
         <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-          
-          
+
+
           {% if allpost is empty %}
           <h4>Not post found!</h4>
           {% else %}
@@ -84,8 +84,9 @@
                 <h5 class="card-title">{{post.title | e}}</h5>
                 <p class="card-text">{{post.description | e}}</p>
               </div>
+              <button class="btn btn-primary " data-bs-toggle="modal"
+                data-bs-target="#{{post.modalId | e}}">EDIT</button>
 
-              <a href="/edit/{{post._id}}"><button class="btn btn-warning" id="edit">EDIT</button></a>
 
               <a href="/delete/{{post._id}}"><button class="btn btn-danger" id="delete">DELETE</button></a>
 
@@ -95,12 +96,77 @@
             </div>
           </div>
 
-          {% endfor %}
-          {% endif %}
+          <!-- Modal -->
+          <div class="modal fade" id="{{post.modalId | e}}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header border-0">
 
+                  <!-- <h5 class="modal-title" id="staticBackdropLabel">{{post.title | e}}</h5> -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+
+
+                <!-- UPDATE FORM NEW -->
+                <div class="modal-body">
+                  <form action="/edit/{{post._id}}" method="POST">
+                    <h2 class="text-center">Edit Ticket</h2>
+                    <label class="" for="title">Event Name</label>
+                    <input class="form-control" type="text" value="{{post.title | e}}" id="title" name="title">
+                    <br>
+                    <label class="mt-2" for="place ">Event Place</label>
+                    <input class="form-control" type="text" value="{{post.place | e}}" id="place" name="place">
+                    <br>
+                    <input class="form-control d-none" type="text" placeholder="Event Id" id="modalId" name="modalId">
+                    
+                    <label class="mt-2" for="category">Category</label>
+
+                    <div class="">
+                      <label class="btn ml-0">
+                        <input type="checkbox" name="concert" id="concert" value="checked"> Concert
+                      </label>
+                      <label class="btn">
+                        <input type="checkbox" name="exhibition" id="exhibition" value="checked"> Exhibition
+                      </label>
+                      <label class="btn">
+                        <input type="checkbox" name="theatre" id="theatre" value="checked"> Theatre
+                      </label>
+                      <label class="btn">
+                        <input type="checkbox" name="sports" id="sports" value="checked"> Sports
+                      </label>
+                    </div>
+                    <br>
+                    <label class="" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="description"
+                      id="post" rows="5">{{post.description | e}}</textarea>
+                    <br>
+                    <label class="mt-2" for="tags">Product Tags</label>
+                    <input class=" form-control" type="text" value="{{post.tags | e}}" name="tags">
+                    <br>
+                    <label class="mt-2" for="img">Image ID</label>
+                    <input class="form-control" type="text" value="{{post.img | e}}"
+                      name="img">
+                    <br>
+                    <a href="/edit/{{post._id}}"><button type="submit" class="btn btn-warning" id="update">Update</button></a>
+
+                  </form>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
+
+        {% endfor %}
+        {% endif %}
+
       </div>
     </div>
+  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
