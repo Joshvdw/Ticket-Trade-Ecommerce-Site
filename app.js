@@ -251,6 +251,8 @@ app.get('/delete/:id', (req, res) => {
     })
 });
 
+
+
 // view the posts on the home page
 // Render the quotes to homepage
 app.get('/', (req, res) => {
