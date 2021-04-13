@@ -1,11 +1,14 @@
 // ==========================================================
 // Display items as per user's input 
 // ==========================================================
-console.log('filter script')
+// console.log('filter script')
+var category = document.getElementsByClassName('categoryFilter').value
+console.log(category)
+
 var inputArray = [];
 
 inputArray.push(document.getElementsByClassName('categoryFilter').value);
-// console.log(category);
+console.log(inputArray);
 // $('#post-ticket').click(function () {
 //     var inputArray = [];
 
