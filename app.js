@@ -116,7 +116,7 @@ app.post("/register", (req, res) => {
   // such as encryped the password with hash & salt, and then being able to verify it
   app.post("/login", passport.authenticate("local",{
     // on success, redirect to the profile, on failure, redirect back to login
-    successRedirect: "/profile",
+    successRedirect: "/sell-ticket",
     failureRedirect: "/login"
     })
   );
@@ -274,24 +274,6 @@ app.get('/', (req, res) => {
         if (err) throw err;
     }); 
 });
-
-// EDIT POST
-// app.get('/edit/:id', (req, res) => {
-
-//   Post.findById(req.params.id)
-//     .then(result => {
-//       if (result) {
-//         res.render('edit', {
-//           post: result
-//         });
-//       } else {
-//         res.redirect('/');
-//       }
-//     })
-//     .catch(err => {
-//       res.redirect('/');
-//     });
-// });
 
 // UPDATE POST
 app.post('/edit/:id', (req, res) => {

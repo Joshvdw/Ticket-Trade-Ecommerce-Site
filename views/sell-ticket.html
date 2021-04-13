@@ -68,16 +68,16 @@
 
               <div class="">
                   <label class="btn ml-0">
-                    <input type="checkbox" name="concert" id="concert" value="checked"> Concert
+                    <input type="radio" name="category" id="concert" value="concert"> Concert
                   </label>
                   <label class="btn">
-                    <input type="checkbox" name="exhibition" id="exhibition" value="checked"> Exhibition
+                    <input type="radio" name="category" id="exhibition" value="exhibition"> Exhibition
                   </label>
                   <label class="btn">
-                    <input type="checkbox" name="theatre" id="theatre" value="checked"> Theatre
+                    <input type="radio" name="category" id="theatre" value="theatre"> Theatre
                   </label>
                   <label class="btn">
-                    <input type="checkbox" name="sports" id="sports" value="checked"> Sports
+                    <input type="radio" name="category" id="sports" value="sports"> Sports
                   </label>
               </div>
 
@@ -88,7 +88,7 @@
               <label class="mt-2" for="img">Image ID</label>
               <input class="form-control" type="text" placeholder="Image address url from Google Drive or google" name="img">
 
-              <button class="col-12 btn btn-info text-light mt-3" type="submit">Create Listing</button>
+              <button class="col-12 btn btn-info text-light mt-3" type="submit" id="post-ticket">Create Listing</button>
 
 
             </form>
