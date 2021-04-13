@@ -11,7 +11,7 @@
 </head>
 
 <body style="background-image: url(/images/image.png);">
-  <div class="container bg-light rounded my-2">
+  <div class="container bg-light rounded my-2 mb-5 clearfix">
     <nav class="navbar navbar-expand-lg navbar-light ">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -63,8 +63,7 @@
     </nav>
   </div>
 
-
-  <div class="container">
+  <!-- <div class="container">
 
     <form class="btn-group bg-light rounded my-2">
 
@@ -85,10 +84,9 @@
         <input type="checkbox" name="homeFilter" id="sports" value="sports"> Sports
       </label>
     </form>
-  </div>
+  </div> -->
 
-  <div class="container bg-light rounded mt-4">
-
+  <div class="container bg-light rounded mt-4 p-4">
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
       
@@ -102,13 +100,13 @@
           <div class="card-body">
             <h3 class="card-title">{{post.title | e}}</h3>
             <h6 class="card-title"><i class="bi bi-geo-alt-fill"></i> {{post.place | e}}</h5>
-            <button class="btn btn-sm btn-outline-secondary mb-2">{{post.tags[0] | e}}</button>
+            <button class="btn btn-sm btn-outline-secondary mb-2 border-0">{{post.tags[0] | e}}</button>
             <input class="categoryFilter d-none" value="{{post.category | e}}"></input>
             <div class=" d-flex justify-content-between ">
-              <button class="btn btn-primary " data-bs-toggle="modal"
+              <button class="btn btn-blue text-white" data-bs-toggle="modal"
                 data-bs-target="#{{post.modalId | e}}">DETAILS</button>
 
-              <a href="/confirm"><button class="btn btn-primary align-self-end">BUY</button></a>
+              <a href="/confirm"><button class="btn btn-blue align-self-end text-white">BUY</button></a>
             </div>
           </div>
 
@@ -156,7 +154,7 @@
             <div class="modal-footer">
 
                 <form class="input-group mb-2" action="/comment/{{post._id}}" method="POST">
-                  <button class="btn btn-primary" type="submit">Post</button>
+                  <button class="btn btn-blue text-white" type="submit">Post</button>
                   <input type="text" class="form-control" name="comment" placeholder="Leave a comment here" aria-label="With textarea" aria-describedby="button-addon1">
                  
                 </form>
