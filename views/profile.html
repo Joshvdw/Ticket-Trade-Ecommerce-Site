@@ -78,17 +78,21 @@
           {% for post in allpost %}
 
           <div class="col">
-            <div class="card h-100">
+            <div class="card">
               <img src="{{post.img | e}}" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">{{post.title | e}}</h5>
-                <p class="card-text">{{post.description | e}}</p>
-              </div>
-              <button class="btn btn-primary " data-bs-toggle="modal"
+
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                 data-bs-target="#{{post.modalId | e}}">EDIT</button>
+                <a href="/delete/{{post._id}}"><button class="btn btn-danger btn-sm" id="delete">DELETE</button></a>
+
+              </div>
+
+              
 
 
-              <a href="/delete/{{post._id}}"><button class="btn btn-danger" id="delete">DELETE</button></a>
+              
 
               <div class="card-footer">
                 <small class="text-muted">Listed {{post.createdAt | date("d M, Y")}}</small>
@@ -103,7 +107,6 @@
               <div class="modal-content">
                 <div class="modal-header border-0">
 
-                  <!-- <h5 class="modal-title" id="staticBackdropLabel">{{post.title | e}}</h5> -->
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                 </div>
@@ -152,19 +155,21 @@
                     <a href="/edit/{{post._id}}"><button type="submit" class="btn btn-warning" id="update">Update</button></a>
 
                   </form>
-
                 </div>
 
               </div>
 
             </div>
           </div>
+
+          {% endfor %}
+          {% endif %}
+
         </div>
-
-        {% endfor %}
-        {% endif %}
-
       </div>
+        
+
+      
     </div>
   </div>
   </div>

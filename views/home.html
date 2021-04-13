@@ -142,12 +142,9 @@
                 <div class="modal-comment">
                   <label for="comment" class="col-form-label">Comment:</label>
                   <ul class="modal-list list-unstyled">
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[0] |e}}</li>
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[1] |e}}</li>
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[2] |e}}</li>
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[3] |e}}</li>
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[4] |e}}</li>
-                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[5] |e}}</li>
+                    {% for key,value in post.comment %}
+                    <li class="modal-list-item pb-3"><i class="bi bi-chat-left-text"></i>{{post.comment[key] |e}}</li>
+                    {% endfor %}
                   </ul>
                 </div>
 
@@ -158,8 +155,8 @@
             <div class="modal-footer">
 
                 <form class="input-group mb-2" action="/comment/{{post._id}}" method="POST">
-                  <button class="btn btn-primary" type="submit" id="button-addon1">Post</button>
-                  <input type="text" class="form-control" id="comment" name="comment" placeholder="Leave a comment here" aria-label="With textarea" aria-describedby="button-addon1">
+                  <button class="btn btn-primary" type="submit">Post</button>
+                  <input type="text" class="form-control" name="comment" placeholder="Leave a comment here" aria-label="With textarea" aria-describedby="button-addon1">
                  
                 </form>
               
