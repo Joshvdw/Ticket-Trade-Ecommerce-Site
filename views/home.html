@@ -68,21 +68,21 @@
 
     <form class="btn-group bg-light rounded my-2">
 
-      <label class="btn">
-        <input type="checkbox" name="" id="all"> All
+      <label class="btn" for="homeFilter">
+        <input type="checkbox" name="homeFilter" id="all" value="all"> All
       </label>
 
       <label class="btn">
-        <input type="checkbox" name="" id="concert" value="checked"> Concert
+        <input type="checkbox" name="homeFilter" id="concert" value="concert"> Concert
       </label>
       <label class="btn">
-        <input type="checkbox" name="" id="exhibition" value="checked"> Exhibition
+        <input type="checkbox" name="homeFilter" id="exhibition" value="exhibition"> Exhibition
       </label>
       <label class="btn">
-        <input type="checkbox" name="" id="theatre" value="checked"> Theatre
+        <input type="checkbox" name="homeFilter" id="theatre" value="theatre"> Theatre
       </label>
       <label class="btn">
-        <input type="checkbox" name="" id="sports" value="checked"> Sports
+        <input type="checkbox" name="homeFilter" id="sports" value="sports"> Sports
       </label>
     </form>
   </div>
@@ -102,7 +102,7 @@
             <h3 class="card-title">{{post.title | e}}</h3>
             <h5 class="card-title"><i class="bi bi-geo-alt-fill"></i> {{post.place | e}}</h5>
             <button class="btn btn-sm btn-outline-secondary mb-2">{{post.tags[0] | e}}</button>
-
+            <input class="categoryFilter d-none" value="{{post.category | e}}"></input>
             <div class=" d-flex justify-content-between ">
               <button class="btn btn-primary " data-bs-toggle="modal"
                 data-bs-target="#{{post.modalId | e}}">DETAILS</button>
@@ -172,9 +172,11 @@
 
 
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-      </script>
+    </script>
+    <script src="filter.js"></script>
 </body>
 
 </html>
