@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
@@ -9,4 +9,53 @@ body{
 
 .btn-pink {
     background-color: #F7BFE9;
+}
+
+
+.card-columns .card {
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    width: 100%;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+.profile-card-columns .card{
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    width: 100%;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+}
+
+@media (min-width: 768px) {
+    .profile-card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 992px) {
+    .profile-card-columns {
+        column-count: 2;
+    }
 }

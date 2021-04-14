@@ -60,15 +60,15 @@
         <!-- YOUR TICKETS -->
         <div class="col-md-6 bg-white p-4 rounded">
           <h4 class="mt-2 text-center">Your Tickets</h4>
-          <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-1 g-4 mt-2">
+
+          <div class="profile-card-columns">
+
 
             {% if allpost is empty %}
             <h4>Not post found!</h4>
             {% else %}
             {% for post in allpost %}
-
-            <div class="col">
-              <div class="card">
+              <div class="card shadow">
                 <img src="{{post.img | e}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h6 class="card-title">{{post.title | e}}</h6>
@@ -83,7 +83,7 @@
                   <small class="text-muted">Listed {{post.createdAt | date("d M, Y")}}</small>
                 </div>
               </div>
-            </div>
+            
 
             <!-- Modal -->
             <div class="modal fade" id="{{post.modalId | e}}" data-bs-backdrop="static" data-bs-keyboard="false"
