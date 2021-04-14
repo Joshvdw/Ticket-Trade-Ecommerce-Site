@@ -1,5 +1,3 @@
-console.log("hello");
-
 let titleInput = document.getElementById('title');
 
 let modalInput = document.getElementById('modalId');
