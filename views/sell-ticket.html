@@ -49,49 +49,48 @@
         </nav>
     </div>
 
- <div class="col-sm-6 mx-auto mt-5 ">
-        <div class=" m-auto  rounded bg-light">
+      <div class="col-xl-6 col-md-8 col-10 mx-auto mt-5 ">
+        <div class=" m-auto rounded bg-light">
           
-          <div class="p-3">
+          <div class="py-4 px-5">
+            <div class="px-3">
+              
+              <form action="/sell-ticket" method="POST">
+                <h2 class="text-center">Sell Your Tickets</h2>
+                <label class="mb-2" for="title">Event Name</label>
+                <input class="form-control mb-2" type="text" placeholder="Event name" id="title" name="title">
 
-            <form action="/sell-ticket" method="POST">
-              <h2 class="text-center">Sell Your Tickets</h2>
-              <label class="" for="title">Event Name</label>
-              <input class="form-control" type="text" placeholder="Event name" id="title" name="title">
+                <label class="my-2" for="place ">Event Place</label>
+                <input class="form-control mb-2" type="text" placeholder="Event Place" id="place" name="place">
 
-              <label class="mt-2" for="place ">Event Place</label>
-              <input class="form-control" type="text" placeholder="Event Place" id="place" name="place">
+                <input class="form-control d-none" type="text" placeholder="Event Id" id="modalId" name="modalId">
 
-              <input class="form-control d-none" type="text" placeholder="Event Id" id="modalId" name="modalId">
+                <label class="my-2" for="category">Category</label>
 
-              <label class="mt-2" for="category">Category</label>
+                <div class="mb-2">
+                    <label class="btn ml-0">
+                      <input type="radio" name="category" id="concert" value="concert"> Concert
+                    </label>
+                    <label class="btn">
+                      <input type="radio" name="category" id="exhibition" value="exhibition"> Exhibition
+                    </label>
+                    <label class="btn">
+                      <input type="radio" name="category" id="theatre" value="theatre"> Theatre
+                    </label>
+                    <label class="btn">
+                      <input type="radio" name="category" id="sports" value="sports"> Sports
+                    </label>
+                </div>
 
-              <div class="">
-                  <label class="btn ml-0">
-                    <input type="checkbox" name="concert" id="concert" value="checked"> Concert
-                  </label>
-                  <label class="btn">
-                    <input type="checkbox" name="exhibition" id="exhibition" value="checked"> Exhibition
-                  </label>
-                  <label class="btn">
-                    <input type="checkbox" name="theatre" id="theatre" value="checked"> Theatre
-                  </label>
-                  <label class="btn">
-                    <input type="checkbox" name="sports" id="sports" value="checked"> Sports
-                  </label>
-              </div>
-
-              <label class="" for="description">Description</label>
-              <textarea class="form-control" type="text" placeholder="Write something..." name="description" id="post" rows="5"></textarea>
-              <label class="mt-2" for="tags">Product Tags</label>
-              <input class=" form-control" type="text" placeholder="Tags here" name="tags">
-              <label class="mt-2" for="img">Image ID</label>
-              <input class="form-control" type="text" placeholder="ID from Google Drive URL" name="img">
-
-              <button class="col-12 btn btn-info text-light mt-3" type="submit">Create Listing</button>
-
-
-            </form>
+                <label class="mb-2" for="description">Description</label>
+                <textarea class="form-control mb-2" type="text" placeholder="Write something..." name="description" id="post" rows="5"></textarea>
+                <label class="my-2" for="tags">Related tags</label>Tags</label>
+                <input class="form-control mb-2" type="text" placeholder="Tags here" name="tags">
+                <label class="my-2" for="img">Image ID</label>
+                <input class="form-control" type="text" placeholder="Image address url from Google Drive or google" name="img">
+                <button class="col-12 btn btn-blue text-light mt-4" type="submit" id="post-ticket">Create Listing</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

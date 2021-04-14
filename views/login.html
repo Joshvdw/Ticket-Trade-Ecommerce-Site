@@ -29,12 +29,6 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="/register">REGISTER</a>
                         </li>
-                        {# <li class="nav-item">
-                            <a class="nav-link" href="/login">LOG IN</a>
-                        </li> #}
-                        {# <li class="nav-item">
-                            <a class="nav-link" href="/profile">PROFILE</a>
-                        </li> #}
                     </ul>
 
                     {% if user %}
@@ -42,38 +36,35 @@
                     {% else %}
                     <a class=" btn btn-warning " href="/login">SELL</a>
                     {% endif %}
-                    <!-- <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
+     
                 </div>
             </div>
         </nav>
     </div>
 
 
-    <div class="col-sm-6  mt-5 mx-auto ">
+    <div class="col-md-6 col-10 mt-5 mx-auto bg-light rounded p-4">
         
-        <form class=" bg-light rounded p-3" action="/login" method="POST">
+        <form action="/login" method="POST">
     
             <h2 class="text-center">Login</h2> 
 
           <div class="col-md-12">
     
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="username" />
+            <input type="text" class="form-control" name="username" id="username" placeholder=""/>
     
           </div>
     
           <div class="col-md-12">
     
             <label for="password" class="form-label mt-2">Password</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Must contain a number" />
+            <input type="password" class="form-control" name="password" id="password" placeholder=""/>
     
           </div>
     
           <div class="float-right mt-3">
-            <button type="submit" class="btn btn-info text-light">Login</button>
+            <button type="submit" class="btn btn-blue text-light btn-block">Login</button>
           </div>
     
           
