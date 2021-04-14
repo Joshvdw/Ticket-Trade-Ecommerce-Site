@@ -71,7 +71,7 @@
 
       <!-- Ticket Cards -->
 
-      <div class="card shadow ">
+      <div class="card shadow mb-4">
         <img src="{{post.img | e}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h4 class="card-title">{{post.title | e}}</h4>
@@ -83,13 +83,11 @@
               data-bs-target="#{{post.modalId | e}}">DETAILS</button>
             <a href="/confirm"><button class="btn btn-blue align-self-end text-white">BUY</button></a>
           </div>
-
-
-          <div class="card-footer">
-            <small class="text-muted float-right">Listed {{post.createdAt | date("d M, Y")}}</small>
-          </div>
-
         </div>
+
+         <div class="card-footer">
+           <small class="text-muted float-right mb-0">Listed {{post.createdAt | date("d M, Y")}}</small>
+         </div>
       </div>
       <!-- cards ends -->
 
@@ -107,8 +105,8 @@
 
             <div class="modal-body">
               <img src="{{post.img | e}}" class="card-img-top" alt="...">
-              <div class="mb-2">
-                <h5 class="card-title mt-2"><i class="bi bi-geo-alt-fill"></i>{{post.place | e}}</h5>
+              <div class="">
+                <h5 class="card-title mt-3"><i class="bi bi-geo-alt-fill"></i>{{post.place | e}}</h5>
                 <button class="btn btn-sm btn-outline-secondary mb-2 border-0">{{post.tags[0] | e}}</button>
                 <p class="card-text">{{post.description | e}}</p>
 
@@ -117,7 +115,7 @@
                   <label for="comment" class="col-form-label my-3">Comments</label>
                   <ul class="modal-list list-unstyled">
                     {% for key,value in post.comment %}
-                    <li class="modal-list-item py-4 border-top"><i
+                    <li class="modal-list-item py-3 border-top"><i
                         class="bi bi-chat-left-text"></i>{{post.comment[key] |e}}</li>
                     {% endfor %}
                   </ul>
