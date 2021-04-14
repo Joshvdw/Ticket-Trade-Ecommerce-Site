@@ -41,7 +41,7 @@ app.use(require("express-session")({
 app.use(express.static(__dirname + '/public'));
 
 // add the bodyParser so we can return our information to the database
-app.use(bodyParser.urlencoded({ extended:true }))
+app.use(bodyParser.urlencoded({ extended:true }));
 
 // turn on the passport dependency 
 app.use(passport.initialize());
@@ -58,8 +58,6 @@ app.listen(port, function (err) {
     console.log("Server Started At Port " + port);
   }
 });
-
-// NAVIGATION
 
 // LOGIN
 app.get("/login", (req, res) => {
@@ -106,8 +104,8 @@ app.post("/register", (req, res) => {
     	    passport.authenticate("local")(req, res, function () { 
             console.log(req);
     	      res.redirect("/login");
-    	    })
-    	  })
+    	    });
+    	  });
       });
       
   // set up the functionality for logging in an existing user
@@ -137,13 +135,12 @@ app.post("/register", (req, res) => {
 
   // stop users from selling if they haven't logged in
   app.get("/sell-ticket", isLoggedIn, (req, res) => {
-    res.render('sell-ticket.html', { user: req.user })
-  })
+    res.render('sell-ticket.html', { user: req.user });
+  });
 
     app.get("/profile", isLoggedIn, (req, res) => {
   
     Post.find()
-
 
       // SET descending ORDER BY createdAt
       .sort({
@@ -162,9 +159,9 @@ app.post("/register", (req, res) => {
       .catch(err => {
         if (err) throw err;
       });
-    })
+    });
 
-
+  // Sell-ticket function 
   app.post('/sell-ticket', (req, res) => {
     console.log("post submitted");
 
@@ -183,36 +180,15 @@ app.post("/register", (req, res) => {
       // then means, a function to complete once the previous one has completed
       .then(result => {
         // overide the default function and redirect the browser back to the homepage
-        res.redirect('/')
+        res.redirect('/');
       })
       // catching and displaying an error if there is one
       .catch(err => {
         if (err) throw err;
-      })
+      });
   });
 
-  // app.post('/', (req, res) => {
-  //   console.log("comment submitted");
-
-  //   new Comment({
-  //       comment: req.body.comment,
-  //       id: req.body.id
-  //     })
-  //     .save()
-  //     .then(result => {
-  //       res.redirect('/')
-  //     })
-  //     .catch(err => {
-  //       if (err) throw err;
-  //     })
-  // });
-
-  ////////////////////////////////
-  ///                          ///
-  /// Comment on post function ///
-  ///                          ///
-  ////////////////////////////////
-
+  // Comment Function
   app.post('/comment/:id', (req, res) => {
     Post.findById(req.params.id)
       .then(result => {
@@ -248,18 +224,14 @@ app.get('/delete/:id', (req, res) => {
     .catch(err => {
       console.log(err);
       res.redirect('/profile');
-    })
+    });
 });
-
-
 
 // view the posts on the home page
 // Render the quotes to homepage
 app.get('/', (req, res) => {
     // FETCH ALL POSTS FROM DATABASE
     Post.find()
-
-
     // SET descending ORDER BY createdAt
     .sort({createdAt: 'descending'})
     .then(result => {
@@ -282,7 +254,7 @@ app.post('/edit/:id', (req, res) => {
   Post.findById(req.params.id)
     .then(result => {
       if (result) {
-        console.log('updated')
+        console.log('updated');
         result.title = req.body.title;
         result.place = req.body.place;
         result.category = req.body.category;
