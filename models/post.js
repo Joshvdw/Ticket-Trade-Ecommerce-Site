@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
     title: {
-        type:String,
-        require:true
+        type: String,
+        require: true
     },
     modalId: {
-        type:String,
-        require:true
+        type: String,
+        require: true
     },
     place: {
-        type:String,
-        require:true
+        type: String,
+        require: true
     },
     category: {
         type: String,
